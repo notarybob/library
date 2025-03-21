@@ -4,17 +4,17 @@ import { DotSize, TabButtonLayout, TabElementDisplayOptions } from "./types";
 import { isIphoneX } from "./utils/iPhoneX";
 
 // Config
-let BOTTOM_PADDING = 20;
-let BOTTOM_PADDING_IPHONE_X = 30;
+const BOTTOM_PADDING = 20;
+const BOTTOM_PADDING_IPHONE_X = 30;
 
-let floatingMarginBottom = css`
+const floatingMarginBottom = css`
   margin-bottom: ${isIphoneX() ? BOTTOM_PADDING_IPHONE_X : BOTTOM_PADDING}px;
 `;
-let floatingMarginHorizontal = css`
+const floatingMarginHorizontal = css`
   margin-horizontal: 20px;
 `;
 
-let floatingRoundCorner = css`
+const floatingRoundCorner = css`
   border-radius: 40px;
 `;
 
@@ -27,7 +27,7 @@ interface IBottomTabBarWrapper {
   bottomPadding: number;
 }
 
-let BottomTabBarWrapper = Styled.View<IBottomTabBarWrapper>`
+const BottomTabBarWrapper = Styled.View<IBottomTabBarWrapper>`
 	flex-direction: row;
 	${(p) => p.floating && floatingMarginHorizontal};
     elevation: 2;
@@ -46,7 +46,7 @@ let BottomTabBarWrapper = Styled.View<IBottomTabBarWrapper>`
 
   `;
 
-let calculateDotSize = (size: DotSize) => {
+const calculateDotSize = (size: DotSize) => {
   switch (size) {
     case DotSize.SMALL:
       return 40;
@@ -67,7 +67,7 @@ interface ITabButton {
 }
 
 
-let TabButton = Styled.TouchableOpacity<ITabButton>`
+const TabButton = Styled.TouchableOpacity<ITabButton>`
 	flex: 1;
 	flex-direction: ${(p) =>
     p.tabButtonLayout == TabButtonLayout.VERTICAL
@@ -91,7 +91,7 @@ interface ILabelProps {
   activeColor: string;
 }
 
-let Label = Styled(Animated.Text)<ILabelProps>`
+const Label = Styled(Animated.Text)<ILabelProps>`
 	fontSize: ${(p) =>
     p.whenInactiveShow == TabElementDisplayOptions.BOTH || p.whenActiveShow == TabElementDisplayOptions.BOTH ? "14" : "17"}px;
 	color: ${(p) => p.activeColor};
@@ -110,7 +110,7 @@ interface IDotProps {
   activeTabBackground: string;
 }
 
-let Dot = Styled(Animated.View)<IDotProps>`
+const Dot = Styled(Animated.View)<IDotProps>`
 	position: absolute;
 	top: ${(p) => p.topPadding}px;
 	width: ${(p) => p.width}px;
@@ -120,7 +120,7 @@ let Dot = Styled(Animated.View)<IDotProps>`
 	z-index: -1;
 `;
 
-let SHADOW = css`
+const SHADOW = css`
   shadow-color: #000000;
   shadow-offset: 0px 5px;
   shadow-opacity: 0.05;
